@@ -70,32 +70,15 @@ see https://developer.salesforce.com/docs/component-library/documentation/en/lwc
 
 ### 3.3 Datatables CSS styling resources
 
-The Datatables.net CSS files imported locally in the `baseTable`component :
+The Datatables.net CSS files are imported globally in `index.html`, after the Lightning SLDS resources :
 
 ```
-// baseTable.css
+// index.html
 
-@import "datatables/datatables.bootstrap5";
-@import "datatables/select.bootstrap5";
+<!-- Datatables.net - Bootstrap 5 & Select -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.6.0/css/select.dataTables.min.css" />
 ```
-
-The Datatables.net CSS files are stored in a `datables`module :
-
-```
- my
- |
-  -- datatables
-      |
-       -- datatables.bootstrap5
-      |     |
-      |      -- datatables.bootstrap5.css
-      |
-       -- select.bootstrap5
-            |
-             -- select.bootstrap5.css
-```
-
-(see https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.create_components_css_share)
 
 ### 3.4 Datatables initialisation
 
