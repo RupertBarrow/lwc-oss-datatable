@@ -1,0 +1,64 @@
+{
+  "name": "lwc-oss-datatables",
+  "version": "0.0.1",
+  "bugs": "https://github.com/RupertBarrow/lwc-oss-datatables/issues",
+  "dependencies": {
+    "@lwc/synthetic-shadow": "^2.37.1",
+    "@salesforce-ux/design-system": "^2.20.1",
+    "@salesforce/source-deploy-retrieve": "^7.9.1",
+    "compression": "^1.7.4",
+    "datatables.net-bs5": "^1.13.2",
+    "datatables.net-select-bs5": "^1.6.0",
+    "dotenv": "^16.0.3",
+    "lightning-base-components": "^1.17.3-alpha"
+  },
+  "engines": {
+    "node": ">=10.13.0",
+    "npm": ">=6.4.1",
+    "yarn": ">=1.9.4"
+  },
+  "homepage": "https://github.com/RupertBarrow/lwc-oss-datatables",
+  "keywords": [
+    "lwc"
+  ],
+  "license": "MIT",
+  "repository": "rapido-devops-center-toolkit",
+  "scripts": {
+    "build": "lwc-services build -m production -w webpack.config.js",
+    "build:development": "lwc-services build",
+    "lint": "eslint ./src/**/*.js",
+    "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+    "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+    "serve": "run-p serve:client serve:api",
+    "serve:api": "node src/server/api.js",
+    "serve:client": "node scripts/server.js",
+    "test:unit": "lwc-services test:unit",
+    "test:unit:coverage": "lwc-services test:unit --coverage",
+    "test:unit:debug": "lwc-services test:unit --debug",
+    "test:unit:watch": "lwc-services test:unit --watch",
+    "watch": "run-p watch:client watch:server",
+    "watch:client": "lwc-services watch -w webpack.config.js",
+    "watch:server": "nodemon src/server/api.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.1",
+    "lwc-services": "^3.2.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{css,html,js,json,md,ts,yaml,yml}": [
+      "prettier --write"
+    ],
+    "./src/**/*.js": [
+      "eslint"
+    ]
+  }
+}
