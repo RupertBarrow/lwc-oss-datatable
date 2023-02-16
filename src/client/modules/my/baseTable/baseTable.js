@@ -33,20 +33,17 @@ export default class BaseTable extends LightningElement {
   }
 
   initTable() {
-    // Table
-    let table = this.template.querySelector("table")
+    //let table = this.template.querySelector("table")
+    // see https://datatables.net/forums/discussion/75457/cant-get-select-initialized#latest
+    let container = this.template.querySelector("div")
+    let table = $('<table lwc:dom="manual" class="tableCls slds-table slds-table_cell-buffer slds-table_bordered" style="width: 100%"></table>')
+    table.appendTo(container)
+
     this.oDataTable = $(table).DataTable({
       data: this.data,
       columns: this.columns,
       select: true,
     })
-
-    // Display the table
     this.oDataTable.draw()
-
-    // DEBUG Select
-    console.log("### select()")
-    this.oDataTable.row(":eq(0)", { page: "current" }).select()
-    this.oDataTable.row(":eq(3)", { page: "current" }).select()
   }
 }
